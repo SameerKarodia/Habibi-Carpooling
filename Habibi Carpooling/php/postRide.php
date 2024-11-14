@@ -70,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <head>
         <link rel="stylesheet" href="habibiStyles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     </head>
 
     <body>
@@ -99,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </fieldset>
             </form>
         </div>
-        <button onclick="window.location.href='profile.php'">Back</button>
+        <button class="back-button" onclick="window.location.href='profile.php'">Back</button>
+
     </body>
 </html>
