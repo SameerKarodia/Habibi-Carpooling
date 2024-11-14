@@ -244,6 +244,179 @@ body{
 
 
 
+/* Edits for Search */
+.rides-container {
+    margin: 25vh auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.rides-container h1 {
+    font-family: "Sour Gummy", sans-serif;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #021258;
+}
+
+.rides-table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px #000000;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.rides-table th, .rides-table td {
+    padding: 12px;
+    text-align: left;
+    font-family: "Sour Gummy", sans-serif;
+}
+
+.rides-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    font-family: "Sour Gummy", sans-serif;
+}
+
+.rides-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.rides-table tr:hover {
+    background-color: #ddd;
+}
+
+.join-ride-btn,
+.back-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.join-ride-btn:hover,
+.back-button:hover {
+    background-color: #45a049;
+}
+
+
+.ride-full {
+    color: #c22d28;
+    font-weight: bold;
+}
+
+.back-button {
+    margin: 20vh auto;
+    background-color: #837e7e; 
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #333;
+}
+
+
+
+
+
+/* Style for Post Ride Form */
+#postRideForm {
+    width: 60%;
+    max-width: 500px;
+    margin: 28vh auto 5vh auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#postRideForm fieldset {
+    border: none;
+}
+
+#postRideForm legend {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #021258;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#postRideForm label {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1.1em;
+    color: #2f586a;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#postRideForm input[type="text"],
+#postRideForm input[type="datetime-local"],
+#postRideForm input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1em;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+#postRideForm input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-family: "Sour Gummy", sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #e8ebc5;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#postRideForm input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button.back-button {
+    display: block;
+    margin: -4vh auto;
+    padding: 10px 20px;
+    background-color: #837e7e;
+    color: white;
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.back-button:hover {
+    background-color: #333;
+}
+
+
 
 
 
