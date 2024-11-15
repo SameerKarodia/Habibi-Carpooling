@@ -4,92 +4,97 @@ session_start(); // Ensure session is started to get the logged-in user
 // Check if the user is logged in (based on session variable)
 if (!isset($_SESSION['username'])) {
     // If not logged in, redirect to the homepage or login page
-    header("Location: ../html/index.html"); // Replace with your homepage URL if it's not "index.php"
+    header("Location: ../../index.html"); // Replace with your homepage URL if it's not "index.php"
     exit; // Stop further code execution to ensure the redirect works
 }
 
 $userName = $_SESSION['username']; // Get the logged-in username
 
 // Database connection details
-$host = 'localhost';
-$dbUsername = 'root'; // Your MySQL username
-$dbPassword = ''; // Add your database password if required
-$dbname = 'profiles'; // The name of your database
+$host = 'sql207.infinityfree.com'; // Database host
+$dbname = 'if0_37721054_profiles'; // Database name
+$myUsername = 'if0_37721054'; // Database username
+$myPassword = 'XBy6Pc3xIhSzC'; // Database password
+
+// Create a MySQLi connection
+$mysqli = new mysqli($host, $myUsername, $myPassword, $dbname);
+
+// Check the connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
 
 // Check if the form is submitted to join a ride
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ride_id'])) {
     $rideID = $_POST['ride_id']; // Ride ID of the ride the user wants to join
 
-    try {
-        // Create a PDO connection
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbUsername, $dbPassword);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Get the current passenger list and passengers count for this ride
+    $sql = "SELECT passengersList, passengersInt FROM rides WHERE rideID = ?";
+    if ($stmt = $mysqli->prepare($sql)) {
+        $stmt->bind_param('i', $rideID); // 'i' means integer
+        $stmt->execute();
+        $stmt->bind_result($passengersListJson, $passengersInt);
+        $stmt->fetch();
+        $stmt->close();
 
-        // Get the current passenger list and passengers count for this ride
-        $checkRide = $pdo->prepare("SELECT passengersList, passengersInt FROM rides WHERE rideID = :rideID");
-        $checkRide->bindParam(':rideID', $rideID);
-        $checkRide->execute();
-        $ride = $checkRide->fetch(PDO::FETCH_ASSOC);
+        if ($passengersListJson !== null) {
+            $passengersList = json_decode($passengersListJson, true); // Decode the JSON list
 
-        if ($ride) {
-            $passengersList = json_decode($ride['passengersList'], true); // Decode the JSON list
-            $passengersInt = $ride['passengersInt']; // Maximum allowed passengers
+            // Check if the user is already in the passenger list
+            if (in_array($userName, $passengersList)) {
+                echo "You have already joined this ride.";
+            } elseif (count($passengersList) >= $passengersInt) {
+                echo "Sorry, this ride has reached its maximum number of passengers.";
+            } else {
+                // Add the current user to the passenger list
+                $passengersList[] = $userName;
 
-           // Check if the user is already in the passenger list
-                       if (in_array($userName, $passengersList)) {
-                           echo "You have already joined this ride.";
-                       } elseif (count($passengersList) >= $passengersInt) {
-                           echo "Sorry, this ride has reached its maximum number of passengers.";
-                       } else {
-                           // Add the current user to the passenger list
-                           $passengersList[] = $userName;
+                // Encode the updated passenger list back to JSON
+                $updatedPassengersListJson = json_encode($passengersList);
 
-                           // Encode the updated passenger list back to JSON
-                           $updatedPassengersListJson = json_encode($passengersList);
+                // Update the ride with the new passenger list
+                $sql = "UPDATE rides SET passengersList = ? WHERE rideID = ?";
+                if ($stmt = $mysqli->prepare($sql)) {
+                    $stmt->bind_param('si', $updatedPassengersListJson, $rideID); // 's' for string, 'i' for integer
+                    if ($stmt->execute()) {
+                        echo "You have successfully joined the ride!";
+                    } else {
+                        echo "Something went wrong. Please try again.";
+                    }
+                    $stmt->close();
+                }
+            }
+        } else {
+            echo "Ride not found.";
+        }
+    } else {
+        echo "Error preparing query.";
+    }
+}
 
-                           // Update the ride with the new passenger list
-                           $sql = "UPDATE rides SET passengersList = :passengersList WHERE rideID = :rideID";
-                           $stmt = $pdo->prepare($sql);
-                           $stmt->bindParam(':passengersList', $updatedPassengersListJson);
-                           $stmt->bindParam(':rideID', $rideID);
+// Get all rides (without filtering out the driver's own rides)
+$sql = "SELECT rideID, origin, destination, rideDate, passengersList, passengersInt, driver FROM rides WHERE passengersList IS NULL OR JSON_LENGTH(passengersList) < passengersInt";
+$result = $mysqli->query($sql);
 
-                           if ($stmt->execute()) {
-                               echo "You have successfully joined the ride!";
-                           } else {
-                               echo "Something went wrong. Please try again.";
-                           }
-                       }
-                   } else {
-                       echo "Ride not found.";
-                   }
-               } catch (PDOException $e) {
-                   echo "Error: " . $e->getMessage();
-               }
-           }
+// Filter out the rides where the logged-in user is the driver
+$rides = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        if ($row['driver'] !== $userName) {
+            $rides[] = $row;
+        }
+    }
+}
 
-           // Get all rides (without filtering out the driver's own rides)
-           try {
-               $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbUsername, $dbPassword);
-               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$mysqli->close(); // Close the connection to the database
 
-               $stmt = $pdo->prepare("SELECT rideID, origin, destination, rideDate, passengersList, passengersInt, driver FROM rides WHERE passengersList IS NULL OR JSON_LENGTH(passengersList) < passengersInt");
-               $stmt->execute();
-               $rides = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-               // Filter out the rides where the logged-in user is the driver
-               $rides = array_filter($rides, function($ride) use ($userName) {
-                   return $ride['driver'] !== $userName; // Exclude the ride if the driver is the logged-in user
-               });
-           } catch (PDOException $e) {
-               echo "Error: " . $e->getMessage();
-           }
-           ?>
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Search for Rides</title>
-    <link rel="stylesheet" href="habibiStyles.css"> 
+    <link rel="stylesheet" href="../css/habibiStyles.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -133,4 +138,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ride_id'])) {
     </div>
 </body>
 </html>
-
