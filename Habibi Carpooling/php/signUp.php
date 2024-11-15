@@ -3,34 +3,35 @@
     <head>
         <title>Sign Up</title>
         <link rel="stylesheet" href="habibiStyles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     </head>
 
-    <body>
+    <body class="blurredBackground">
         <div id="signup">
-            <h1>Sign up details:</h1>
+            
 
             <!-- Form submission will be handled by PHP below -->
-            <form action="signUp.php" method="POST">
+            <form id="signupForm" action="signUp.php" method="POST">
                 <fieldset>
-                    <legend>Enter Your Details</legend>
-
-                    Username<br>
-                    <input type="text" name="user" required>
+                    <legend>Create Your Account!</legend>
                     <br>
 
-                    Password<br>
-                    <input type="password" name="password" required>
-                    <br>
+                    <input id="text" type="text" name="user" placeholder="Enter your username" required>
+                    <br><br>
+                
 
-                    <br>Contact Information</br>
-                    Email<br>
-                    <input type="email" name="email" required>
-                    <br>
-                    Telephone<br>
-                    <input type="tel" name="telephone" required>
-                    <br>
+                    <input id="text" type="password" name="password" placeholder="Enter your password"required>
+                    <br><br>
 
-                    <input type="submit" value="Sign Up">
+                    
+                    <input id="text2" type="email" name="email" placeholder="Email" required>
+                    <br><br>
+                   
+                    <input id="text2" type="tel" name="telephone" placeholder="Phone Number " required>
+                    <br><br>
+
+                    <input id="signupButton" type="submit" value="Sign Up">
                 </fieldset>
             </form>
         </div>
