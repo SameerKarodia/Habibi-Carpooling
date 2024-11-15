@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <fieldset>
                     <legend>Enter Ride Details</legend>
 
-                    Source<br>
+                    Origin<br>
                     <input type="text" name="departure" required>
                     </br>
 
