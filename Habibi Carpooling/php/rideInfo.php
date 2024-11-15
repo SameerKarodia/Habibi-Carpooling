@@ -131,61 +131,85 @@
 <head>
     <title>Ride Info</title>
     <link rel="stylesheet" href="../css/habibiStyles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="blurredBackground">
 
 <div id="rideInfo">
     <h1>Ride Information</h1>
 
-    <h2>Ride ID: <?php echo htmlspecialchars($ride['rideID']); ?></h2>
-    <p><strong>Driver:</strong> <?php echo htmlspecialchars($ride['driver']); ?></p>
-    <p><strong>Origin:</strong> <?php echo htmlspecialchars($ride['origin']); ?></p>
-    <p><strong>Destination:</strong> <?php echo htmlspecialchars($ride['destination']); ?></p>
-    <p><strong>Date:</strong> <?php 
-        $rideDate = new DateTime($ride['rideDate']);
-        echo $rideDate->format('l, F j, Y g:i A');
-    ?></p>
-    <p><strong>Seats:</strong> <?php echo htmlspecialchars($ride['passengersInt'] + 1); ?></p>
-    <p><strong>Passengers:</strong> <?php 
-        echo count($passengers) > 0 ? implode(', ', $passengers) : "No passengers yet.";
-    ?></p>
+    <div class="ride-info-container">
 
-    <!-- Display contact info based on user role -->
-    <?php if ($isDriver): ?>
-        <h3>Passenger Contact Info:</h3>
-        <ul>
-            <?php foreach ($passengerContacts as $contact): ?>
-                <li>
-                    <strong>Email:</strong> <?php echo htmlspecialchars($contact['email']); ?><br>
-                    <strong>Telephone:</strong> <?php echo htmlspecialchars($contact['telephone']); ?>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php elseif ($isPassenger): ?>
-        <h3>Driver's Contact Info:</h3>
-        <p>
-            <strong>Email:</strong> <?php echo htmlspecialchars($driverContact['email']); ?><br>
-            <strong>Telephone:</strong> <?php echo htmlspecialchars($driverContact['telephone']); ?>
-        </p>
-    <?php endif; ?>
+        <div class="ride-info1">
+            
+            <h3>Ride ID: <?php echo htmlspecialchars($ride['rideID']); ?></h3>
+            
+            <p><strong>Driver:</strong> <?php echo htmlspecialchars($ride['driver']); ?></p>
+        
+            <p><strong>Origin:</strong> <?php echo htmlspecialchars($ride['origin']); ?></p>
+        
+            <p><strong>Destination:</strong> <?php echo htmlspecialchars($ride['destination']); ?></p>
+        
+            <p><strong>Date:</strong> <?php 
+                $rideDate = new DateTime($ride['rideDate']);
+                echo $rideDate->format('l, F j, Y g:i A');
+            ?></p>
+        
+            <p><strong>Seats:</strong> <?php echo htmlspecialchars($ride['passengersInt'] + 1); ?></p>
 
-    <!-- Allow the driver to delete the ride -->
-    <?php if ($isDriver): ?>
-        <form method="POST" onsubmit="return confirm('Are you sure you want to delete this ride?');">
-            <button type="submit" name="deleteRide">Delete Ride</button>
-        </form>
-    <?php endif; ?>
+        
 
-    <!-- Allow passengers to remove themselves -->
-    <?php if ($isPassenger): ?>
-        <form method="POST" onsubmit="return confirm('Are you sure you want to remove yourself from this ride?');">
-            <button type="submit" name="removePassenger">Remove Me</button>
-        </form>
-    <?php endif; ?>
+        
+            <p><strong>Passengers:</strong> <?php 
+                echo count($passengers) > 0 ? implode(', ', $passengers) : "No passengers yet.";
+            ?></p>
+        </div>
+        
+        <div class="ride-info2">
+            <!-- Display contact info based on user role -->
+            <?php if ($isDriver): ?>
+                <h3>Passenger Contact Info:</h3>
+                <ul>
+                    <?php foreach ($passengerContacts as $contact): ?>
+                        <li>
+                            <strong>Email:</strong> <?php echo htmlspecialchars($contact['email']); ?><br>
+                            <strong>Telephone:</strong> <?php echo htmlspecialchars($contact['telephone']); ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php elseif ($isPassenger): ?>
+                <h3>Driver's Contact Info:</h3>
+                <p>
+                    <strong>Email:</strong> <?php echo htmlspecialchars($driverContact['email']); ?><br>
+                    <strong>Telephone:</strong> <?php echo htmlspecialchars($driverContact['telephone']); ?>
+                </p>
+            <?php endif; ?>
+        </div>
+    </div> 
+    <br>
+    <br>
+        <!-- Allow the driver to delete the ride -->
+        <?php if ($isDriver): ?>
+            <form method="POST" onsubmit="return confirm('Are you sure you want to delete this ride?');">
+                <button class="delete-button" type="submit" name="deleteRide">Delete Ride</button>
+            </form>
+        <?php endif; ?>
 
+        <!-- Allow passengers to remove themselves -->
+        <?php if ($isPassenger): ?>
+            <form method="POST" onsubmit="return confirm('Are you sure you want to remove yourself from this ride?');">
+                <button class="delete-button" type="submit" name="removePassenger">Remove Me</button>
+            </form>
+        <?php endif; ?>
+    
 </div>
+<br>
+<br>
 
-<button onclick="window.location.href='profile.php'">Back to Profile</button>
+
+
+<button class="back-button" onclick="window.location.href='profile.php'">Back to Profile</button>
+ 
 
 </body>
 </html>
