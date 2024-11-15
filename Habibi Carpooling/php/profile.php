@@ -4,7 +4,7 @@
     if (!isset($_SESSION['username'])) {
 
         // If not logged in, redirect to the homepage
-        header("Location: ../html/index.html"); 
+        header("Location: ../../index.html"); 
         exit; 
     }
 
@@ -12,10 +12,10 @@
     $username = $_SESSION['username'];
 
     // Database connection details
-    $host = 'localhost';
-    $myUsername = 'root';
-    $myPassword = ''; 
-    $dbname = 'profiles';
+    $host = 'sql207.infinityfree.com'; // Database host
+    $dbname = 'if0_37721054_profiles'; // Database name
+    $myUsername = 'if0_37721054'; // Database username
+    $myPassword = 'XBy6Pc3xIhSzC'; // Database password
 
     // Create a MySQLi connection
     $conn = new mysqli($host, $myUsername, $myPassword, $dbname);
@@ -58,7 +58,7 @@
 <html>
     <head>
         <title>Profile</title>
-        <link rel="stylesheet" href="habibiStyles.css">
+        <link rel="stylesheet" href="../css/habibiStyles.css">
         <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         
     </head>
@@ -120,7 +120,7 @@
                 </div>
             </div>
 
-        <button id="logoutButton" onclick="window.location.href='../html/index.html'">Logout</button>
+        <button id="logoutButton" onclick="window.location.href='../../index.html'">Logout</button>
             
         </div>
         
