@@ -4,7 +4,7 @@
     // Check if the user is logged in
     if (!isset($_SESSION['username'])) {
         // If not logged in, redirect to the homepage
-        header("Location: ../html/homepage.html");
+        header("Location: ../html/index.html");
         exit;
     }
 
