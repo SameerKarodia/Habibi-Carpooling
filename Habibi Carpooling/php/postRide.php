@@ -4,7 +4,7 @@ session_start();
 // Check if the user is logged in (based on session variable)
 if (!isset($_SESSION['username'])) {
     // If not logged in, redirect to the homepage or login page
-    header("Location: ../html/index.html"); // Replace with your homepage URL if it's not "index.php"
+    header("Location: ../../index.html"); // Replace with your homepage URL if it's not "index.php"
     exit; // Stop further code execution to ensure the redirect works
 <?php
 session_start(); 
