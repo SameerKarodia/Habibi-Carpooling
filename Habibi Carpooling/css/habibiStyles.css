@@ -1,17 +1,18 @@
-body {
-    background-image: url(backgroundImage.jpg);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #c47638;
-    font-family: "Sour Gummy", sans-serif;
-    overflow: hidden;
+body{
+    background-image: url(backgroundImage.jpg); 
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    background-color: #c47638; 
+    font-family: "Sour Gummy", sans-serif ;
+    overflow:hidden;
+     
 }
 
 /*changes the background to blurry*/
 .blurredBackground::before {
-    content: "";
+    content: ""; 
     position: absolute;
     top: 0;
     left: 0;
@@ -24,16 +25,17 @@ body {
     background-attachment: fixed;
     background-color: #c47638;
     filter: blur(10px);
-    z-index: -1; /*pushes background back */
+     z-index: -1; /*pushes background back */
+    
 }
 
-/* pushes all text/content forward for visibility*/
+/* pushes all text/content forward for visibility*/ 
 .blurredBackground * {
     position: relative;
     z-index: 1;
 }
 
-.container {
+.container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,111 +43,111 @@ body {
     height: 34vh;
 }
 
-#welcomeMsg h3 {
+#welcomeMsg h3{
     margin-top: 32.5vh;
     text-align: center;
     color: #021258;
 }
 
-#login {
-    text-align: center;
+#login{
+    text-align:center;
     margin-top: 5vh;
-}
+    
+    
 
-#callToAction {
-    text-align: center;
+}
+#callToAction{
+    text-align:center;
+
 }
 
 /*login, logout buttons styles*/
-#loginButton, #signupButton, #logoutButton {
+#loginButton,#signupButton,#logoutButton{
     font-family: "Sour Gummy", sans-serif;
-    font-weight: bold;
+    font-weight:bold;
     border-radius: 20px;
     font-size: 1.2em;
-    color: #1fb4c1;
-    border-color: #1fb4c1;
+    color:#1fb4c1;
+    border-color:#1fb4c1 ;
     box-shadow: inset;
     background-color: #e8ebc5 !important;
     padding: 10px 2vw;
-    opacity: 0;
+    opacity:0; 
     animation: fadeIn 2s ease-out forwards;
+    
+    
 }
 
-    /*login, logout buttons hover properties*/
+/*login, logout buttons hover properties*/
 
-    #loginButton:hover, #signupButton:hover, #logoutButton:hover {
-        background-color: #1fb4c1 !important;
-        color: #e8ebc5;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        transition: 0.5s;
-    }
+#loginButton:hover,#signupButton:hover,#logoutButton:hover{
+    background-color:#1fb4c1 !important;
+    color:#e8ebc5;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    transition: 0.5s;
+}
 
 #callToAction {
-    margin-left: 10%;
+    margin-left:10%;
     margin: 40vh auto;
     width: 80%;
-    margin-top: 31vh;
+    margin-top:31vh ;
     line-height: 0.40em;
     font-weight: bold;
-    color: #2f586a;
+    color:#2f586a;
+
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 /* ------------------------- Additional login.php css could not link with same ids/classes -----------------------------*/
 
-#text {
+#text{
     font-family: "Sour Gummy", sans-serif;
-    font-weight: bold;
-    border-radius: 20px;
-    font-size: 1.1em;
-    color: #1fb4c1;
-    border-color: #1fb4c1;
+    font-weight:bold;
+    border-radius: 10px;
+    font-size:1.1em;
+    color:#3a555f;
+    border-color:#1fb4c1 ;
     box-shadow: inset;
-    background-color: #e8ebc5 !important;
+    background-color: #BDC0A1 !important;
     padding-top: 10px;
-    padding-bottom: 10px;
-    width: 40%;
+    padding-bottom:10px;
+    width:40%;
+    
 }
 
-#loginForm legend, #signupForm legend {
+#loginForm legend, #signupForm legend{
     font-family: "Sour Gummy", sans-serif;
-    font-size: 1.3em;
-    font-weight: bold;
+    font-size:1.3em;
+    font-weight:bold;
     color: #021258;
-    padding-bottom: 2%;
+    padding-bottom:2%;
+
+
 }
 
-#login form, #loginForm fieldset {
+#login form, #loginForm fieldset{
     margin-top: 32.5vh;
     text-align: center;
     color: #021258;
+    
 }
 
-#loginForm fieldset, #signupForm fieldset {
-    border: 2px solid;
+#loginForm fieldset,#signupForm fieldset{
+    border:2px solid;
     border-color: #1fb4c1;
     background-color: #e8ebc5;
     border-radius: 30px;
-    width: 40%;
-    margin: 0 auto;
+    width:40%;
+    margin:0 auto;
     box-shadow: 0 4px 50px #1fb4c1;
-    opacity: 0;
+    opacity:0; 
     animation: fadeIn 1s ease-out forwards;
+
 }
 
-/*fade in animation settings*/
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-#login a {
-    color: #3a7577;
+#login a{
+    color:#3a7577;
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
@@ -157,14 +159,14 @@ body {
     align-items: center;
     gap: 20px;
     text-align: center;
-    margin-top: 31vh;
+    margin-top:31vh;
 }
 
-    #profile h1 {
-        margin: 0;
-        color: #021258;
-        font-style: italic;
-    }
+#profile h1 {
+    margin: 0;
+    color:#021258;
+    font-style: italic;
+}
 
 /* Container for the 4 profilechild divs */
 .profile-children-container {
@@ -173,13 +175,14 @@ body {
     justify-content: center;
     gap: 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1200px; 
     animation: fadeIn 1s ease-out forwards;
+
 }
 
 /* Individual Divs Styling */
 .profilechild {
-    flex: 1 1 200px;
+    flex: 1 1 200px; 
     border: 3.5px solid #1fb4c1;
     padding: 20px;
     border-radius: 15px;
@@ -187,97 +190,102 @@ body {
     min-width: 200px; /* each div won’t shrink below 200px */
     text-align: center;
     background-color: #e8ebc5;
-    height: 40vh;
+    height:40vh;
 }
 
-    .profilechild h2 {
-        color: #196c90;
-        margin-top: 0.5%;
-        text-decoration: underline;
-    }
+.profilechild h2{
+    color:#196c90;
+    margin-top:0.5%;
+    text-decoration: underline;
+
+}
 
 /*lowering logout button*/
 #logoutButton {
-    margin-top: 20px;
+    margin-top:20px;
     align-content: center;
 }
 
 
 /*submit button styled */
-#submitButton {
-    margin-top: 5%;
+#submitButton{
+    margin-top:5%;
     font-family: "Sour Gummy", sans-serif;
-    font-weight: bold;
+    font-weight:bold;
     border-radius: 20px;
     font-size: 1em;
-    color: #e8ebc5;
-    border-color: #e8ebc5;
+    color:#e8ebc5;
+    border-color:#e8ebc5 ;
     box-shadow: inset;
     background-color: #1fb4c1 !important;
     padding: 5px 2vw;
+    
+    
 }
 
-    /*submit button hoveer properties */
-    #submitButton:hover {
-        background-color: #e8ebc5 !important;
-        color: #1fb4c1;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        transition: 0.5s;
-    }
+/*submit button hoveer properties */
+#submitButton:hover{
+    background-color:#e8ebc5 !important;
+    color:#1fb4c1;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    transition:0.5s;
+}
 
 /*destination search bar*/
-#searchText {
+#searchText{
     font-family: "Sour Gummy", sans-serif;
-    font-weight: bold;
-    border-radius: 20px;
-    font-size: 0.9em;
-    color: #1fb4c1;
-    border-color: #1fb4c1;
+    font-weight:bold;
+    border-radius: 10px;
+    font-size:0.9em;
+    color:#3a555f;
+    border-color:#1fb4c1 ;
     box-shadow: inset;
-    background-color: #e8ebc5 !important;
+    background-color: #BDC0A1 !important;
     padding-top: 10px;
-    padding-bottom: 10px;
-    width: 100%;
+    padding-bottom:10px;
+    width:100%;
 }
 
 /* text color for 'rides taken' and 'rides posted'  */
-#taken p, #display p {
-    font-weight: bold;
-    color: #8b3936;
+#taken p,#display p{
+    font-weight:bold;
+    color:#8b3936;
 }
-
-#taken a, #display a {
-    color: #54a3a9;
+#taken a,#display a{
+    color:#54a3a9;
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 /* ------------------------- Additional signup.php css could not link with same ids/classes -----------------------------*/
 
 /*Changed colors for number,email input*/
-#text2 {
+#text2{
     font-family: "Sour Gummy", sans-serif;
-    font-weight: bold;
-    border-radius: 20px;
-    font-size: 1.1em;
-    color: #021258;
-    border-color: #021258;
+    font-weight:bold;
+    border-radius: 10px;
+    font-size:1.1em;
+    color:#021258;
+    border-color:#021258 ;
     box-shadow: inset;
-    background-color: #e8ebc5 !important;
+    background-color: #BDC0A1 !important;
     padding-top: 10px;
-    padding-bottom: 10px;
-    width: 40%;
+    padding-bottom:10px;
+    width:40%;
     transition: background-color 0.3s ease;
+    
 }
 
 /*positioning of signup button*/
-#signup form, #signupForm fieldset {
+#signup form,#signupForm fieldset{
     margin-top: 27.5vh;
     text-align: center;
     color: #021258;
+    
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------- Additional searchRide.php css ------------------------------------------------ */
+
 .rides-container {
     margin: 25vh auto;
     display: flex;
@@ -285,14 +293,15 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    animation:fadeIn 1s;
 }
 
-    .rides-container h1 {
-        font-family: "Sour Gummy", sans-serif;
-        margin-bottom: 20px;
-        font-size: 28px;
-        color: #021258;
-    }
+.rides-container h1 {
+    font-family: "Sour Gummy", sans-serif;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #021258;
+}
 
 .rides-table {
     width: 100%;
@@ -305,26 +314,26 @@ body {
     overflow: hidden;
 }
 
-    .rides-table th, .rides-table td {
-        padding: 12px;
-        text-align: left;
-        font-family: "Sour Gummy", sans-serif;
-    }
+.rides-table th, .rides-table td {
+    padding: 12px;
+    text-align: left;
+    font-family: "Sour Gummy", sans-serif;
+}
 
-    .rides-table th {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-        font-family: "Sour Gummy", sans-serif;
-    }
+.rides-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    font-family: "Sour Gummy", sans-serif;
+}
 
-    .rides-table tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
+.rides-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-    .rides-table tr:hover {
-        background-color: #ddd;
-    }
+.rides-table tr:hover {
+    background-color: #ddd;
+}
 
 .join-ride-btn,
 .back-button {
@@ -339,10 +348,10 @@ body {
     margin-top: 20px;
 }
 
-    .join-ride-btn:hover,
-    .back-button:hover {
-        background-color: #45a049;
-    }
+.join-ride-btn:hover,
+.back-button:hover {
+    background-color: #45a049;
+}
 
 
 .ride-full {
@@ -352,22 +361,22 @@ body {
 
 .back-button {
     margin: 20vh auto;
-    background-color: #837e7e;
+    background-color: #837e7e; 
     color: white;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
 }
 
-    .back-button:hover {
-        background-color: #333;
-    }
+.back-button:hover {
+    background-color: #333;
+}
 
 
 
 
-
-/* Style for Post Ride Form */
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------- Additional postRide.php css ------------------------------------------------ */
 #postRideForm {
     width: 60%;
     max-width: 500px;
@@ -376,60 +385,61 @@ body {
     background-color: #f9f9f9;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s;
 }
 
-    #postRideForm fieldset {
-        border: none;
-    }
+#postRideForm fieldset {
+    border: none;
+}
 
-    #postRideForm legend {
-        font-family: "Sour Gummy", sans-serif;
-        font-size: 1.5em;
-        font-weight: bold;
-        color: #021258;
-        text-align: center;
-        margin-bottom: 1em;
-    }
+#postRideForm legend {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #021258;
+    text-align: center;
+    margin-bottom: 1em;
+}
 
-    #postRideForm label {
-        font-family: "Sour Gummy", sans-serif;
-        font-size: 1.1em;
-        color: #2f586a;
-        margin-bottom: 5px;
-        display: block;
-    }
+#postRideForm label {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1.1em;
+    color: #2f586a;
+    margin-bottom: 5px;
+    display: block;
+}
 
-    #postRideForm input[type="text"],
-    #postRideForm input[type="datetime-local"],
-    #postRideForm input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        font-family: "Sour Gummy", sans-serif;
-        font-size: 1em;
-        color: #333;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        margin-bottom: 15px;
-        box-sizing: border-box;
-    }
+#postRideForm input[type="text"],
+#postRideForm input[type="datetime-local"],
+#postRideForm input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1em;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
 
-    #postRideForm input[type="submit"] {
-        width: 100%;
-        padding: 12px;
-        font-family: "Sour Gummy", sans-serif;
-        font-weight: bold;
-        font-size: 1.2em;
-        color: #e8ebc5;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+#postRideForm input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-family: "Sour Gummy", sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #e8ebc5;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        #postRideForm input[type="submit"]:hover {
-            background-color: #45a049;
-        }
+#postRideForm input[type="submit"]:hover {
+    background-color: #45a049;
+}
 
 button.back-button {
     display: block;
@@ -445,6 +455,114 @@ button.back-button {
     transition: background-color 0.3s;
 }
 
-    button.back-button:hover {
-        background-color: #333;
+button.back-button:hover {
+    background-color: #333;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------- Additional rideInfo.php css ------------------------------------------------ */
+
+#rideInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top:12vh;
+}
+#rideInfo h1{
+    color:#021258;
+}
+
+/* Ride Info Container */
+.ride-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeIn 1s ease-out forwards;
+    border: 2px solid #178b96;
+    border-radius: 10px;
+    background-color: #f7f3f3;
+    box-shadow: 0 4px 50px #1fb4c1;
+}
+
+/* Ride Info1 and Ride Info2 Sections, 2 different columns */
+.ride-info1, .ride-info2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 38px; 
+    width: 100%;
+    max-width: 550px; 
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+/* Individual divs styling */
+.ride-info1 h3, .ride-info2 h3 {
+    flex-basis: 100%; 
+    font-size: 20px;
+    color: #007bff;
+    text-decoration: underline;
+   
+    margin-bottom: 10px;
+}
+
+.ride-info1 p, .ride-info2 p {
+    flex-basis: 45%; 
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/*fade in animation settings*/
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Layout for Larger Screens */
+@media (min-width: 768px) {
+    .ride-info-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .ride-info1, .ride-info2 {
+        width: 48%; 
+    }
+}
+/*delete button styling*/
+button.delete-button {
+    display: block;
+    margin: -4vh auto;
+    padding: 10px 20px;
+    background-color: #8d4646;
+    color: white;
+    font-family: "Sour Gummy", sans-serif;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.delete-button:hover {
+    background-color: #c83939;
+}
+
+
+
+
