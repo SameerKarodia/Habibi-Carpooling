@@ -3,10 +3,10 @@
     session_start();
 
     // Database connection details
-    $host = 'localhost'; // Database host
-    $dbname = 'profiles'; // Database name
-    $myUsername = 'root'; // Database username
-    $myPassword = ''; // Database password
+    $host = 'sql207.infinityfree.com'; // Database host
+    $dbname = 'if0_37721054_profiles'; // Database name
+    $myUsername = 'if0_37721054'; // Database username
+    $myPassword = 'XBy6Pc3xIhSzC'; // Database password
 
     // Create a MySQLi connection
     $conn = new mysqli($host, $myUsername, $myPassword, $dbname);
@@ -73,7 +73,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="habibiStyles.css"> 
+    <link rel="stylesheet" href="../css/habibiStyles.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body class="blurredBackground">
