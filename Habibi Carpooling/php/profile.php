@@ -4,7 +4,7 @@
     if (!isset($_SESSION['username'])) {
 
         // If not logged in, redirect to the homepage
-        header("Location: ../html/homepage.html"); 
+        header("Location: ../html/index.html"); 
         exit; 
     }
 
@@ -120,7 +120,7 @@
                 </div>
             </div>
 
-        <button id="logoutButton" onclick="window.location.href='../html/homepage.html'">Logout</button>
+        <button id="logoutButton" onclick="window.location.href='../html/index.html'">Logout</button>
             
         </div>
         
