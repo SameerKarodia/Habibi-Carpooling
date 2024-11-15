@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Sign Up</title>
-        <link rel="stylesheet" href="habibiStyles.css">
+        <link rel="stylesheet" href="../css/habibiStyles.css">
         <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     </head>
@@ -10,7 +10,6 @@
     <body class="blurredBackground">
         <div id="signup">
             
-
             <!-- Form submission will be handled by PHP below -->
             <form id="signupForm" action="signUp.php" method="POST">
                 <fieldset>
@@ -35,6 +34,7 @@
                 </fieldset>
             </form>
         </div>
+        <p>Already have an account? <a href="login.php">Login here</a>.</p>
     </body>
 </html>
 
@@ -48,11 +48,11 @@
         $telephone = htmlspecialchars($_POST['telephone']);
 
 
-        // Database connection details
-        $host = 'localhost'; //Database host
-        $myUsername = 'root'; //Database username
-        $myPassword = ''; //Database password
-        $dbname = 'profiles'; // Database name
+    // Database connection details
+    $host = 'sql207.infinityfree.com'; // Database host
+    $dbname = 'if0_37721054_profiles'; // Database name
+    $myUsername = 'if0_37721054'; // Database username
+    $myPassword = 'XBy6Pc3xIhSzC'; // Database password
 
         // Create a MySQLi connection
         $conn = new mysqli($host, $myUsername, $myPassword, $dbname);
