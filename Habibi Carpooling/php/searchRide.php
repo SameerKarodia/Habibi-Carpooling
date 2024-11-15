@@ -72,9 +72,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ride_id'])) {
     }
 }
 
-// Get all rides (without filtering out the driver's own rides)
-$sql = "SELECT rideID, origin, destination, rideDate, passengersList, passengersInt, driver FROM rides WHERE passengersList IS NULL OR JSON_LENGTH(passengersList) < passengersInt";
-$result = $mysqli->query($sql);
+// Get the search term from the form, if it exists
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+
+// Base SQL query
+$sql = "SELECT rideID, origin, destination, rideDate, passengersList, passengersInt, driver FROM rides WHERE (origin LIKE ? OR destination LIKE ?) AND (passengersList IS NULL OR JSON_LENGTH(passengersList) < passengersInt)";
+
+// Prepare the SQL statement
+$stmt = $mysqli->prepare($sql);
+
+// Bind parameters (search term needs to be enclosed with wildcards for the LIKE operator)
+$searchTermWithWildcards = '%' . $searchTerm . '%';
+$stmt->bind_param('ss', $searchTermWithWildcards, $searchTermWithWildcards);
+
+// Execute the query
+$stmt->execute();
+$result = $stmt->get_result();
 
 // Filter out the rides where the logged-in user is the driver
 $rides = [];
@@ -87,7 +100,6 @@ if ($result && $result->num_rows > 0) {
 }
 
 $mysqli->close(); // Close the connection to the database
-
 ?>
 
 <!DOCTYPE html>
@@ -100,6 +112,11 @@ $mysqli->close(); // Close the connection to the database
 <body>
     <div class="rides-container">
         <h1>Available Rides</h1>
+
+        <form action="searchRide.php" method="GET">
+            <input type="text" id="searchText" name="search" placeholder="Search by: origin, destination, etc." value="<?php echo htmlspecialchars($searchTerm); ?>">
+            <input id="submitButton" type="submit" value="Search">
+        </form>
 
         <?php if ($rides): ?>
             <table class="rides-table">
@@ -131,7 +148,7 @@ $mysqli->close(); // Close the connection to the database
                 <?php endforeach; ?>
             </table>
         <?php else: ?>
-            <p>No rides available.</p>
+            <p>No rides available matching your search.</p>
         <?php endif; ?>
 
         <button class="back-button" onclick="window.location.href='profile.php'">Back</button>
