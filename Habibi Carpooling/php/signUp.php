@@ -27,7 +27,9 @@
                     <input id="text2" type="email" name="email" placeholder="Email" required>
                     <br><br>
                    
-                    <input id="text2" type="tel" name="telephone" placeholder="Phone Number " required>
+                    <input id="text2" type="tel" name="telephone" placeholder="Phone Number" required pattern="[0-9]{10}"
+                    title="Please enter a valid phone number with exactly 10 digits">
+
                     <br><br>
 
                     <input id="signupButton" type="submit" value="Sign Up">
